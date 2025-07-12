@@ -15,10 +15,10 @@ class SwarmAPI {
             return 'http://localhost:8000';
         } else if (location.hostname.includes('github.io')) {
             // GitHub Pages deployment - use Railway backend
-            return 'https://crazyfiledemo-production.up.railway.app';
+            return 'https://crazyfliedemo-production.up.railway.app';
         } else {
             // Production URL - actual Railway URL
-            return 'https://crazyfiledemo-production.up.railway.app';
+            return 'https://crazyfliedemo-production.up.railway.app';
         }
     }
 
