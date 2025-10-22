@@ -13,9 +13,12 @@ class SwarmAPI {
             location.hostname === '0.0.0.0' ||
             location.hostname === '') {
             return 'http://localhost:8000';
+        } else if (location.hostname.includes('github.io')) {
+            // GitHub Pages deployment - use Railway backend
+            return 'https://crazyflie-swarm-demo-production.up.railway.app';
         } else {
             // Production URL - replace with actual Railway URL
-            return 'https://crazyflie-demo.railway.app';
+            return 'https://crazyflie-swarm-demo-production.up.railway.app';
         }
     }
 
