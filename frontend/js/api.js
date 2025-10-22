@@ -15,10 +15,10 @@ class SwarmAPI {
             return 'http://localhost:8000';
         } else if (location.hostname.includes('github.io')) {
             // GitHub Pages deployment - use Railway backend
-            return 'https://crazyflie-swarm-demo-production.up.railway.app';
+            return 'https://devoted-education-production-22b3.up.railway.app';
         } else {
-            // Production URL - replace with actual Railway URL
-            return 'https://crazyflie-swarm-demo-production.up.railway.app';
+            // Production URL - actual Railway URL
+            return 'https://devoted-education-production-22b3.up.railway.app';
         }
     }
 
