@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connection Test</title>
+</head>
+<body>
+    <h1>Backend-Frontend Connection Test</h1>
+    <div id="status">Testing connection...</div>
+    <div id="details"></div>
+
+    <script>
+        async function testConnection() {
+            const statusDiv = document.getElementById('status');
+            const detailsDiv = document.getElementById('details');
+            
+            try {
+                // Test backend health endpoint
+                const response = await fetch('http://localhost:8000/health');
+                const data = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = '<span style="color: green;">✓ Backend is running and accessible</span>';
+                    detailsDiv.innerHTML = `
+                        <p><strong>Backend Status:</strong> ${data.status}</p>
+                        <p><strong>Backend Type:</strong> ${data.backend}</p>
+                        <p><strong>Response Time:</strong> ${Date.now() - startTime}ms</p>
+                    `;
+                } else {
+                    statusDiv.innerHTML = '<span style="color: red;">✗ Backend responded with error</span>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<span style="color: red;">✗ Cannot connect to backend</span>';
+                detailsDiv.innerHTML = `<p><strong>Error:</strong> ${error.message}</p>`;
+            }
+        }
+        
+        const startTime = Date.now();
+        testConnection();
+    </script>
+</body>
+</html>

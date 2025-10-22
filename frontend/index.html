@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazyflie Swarm Demo</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>Crazyflie Swarm Demo</h1>
+            <div class="status-indicator">
+                <span id="connection-status" class="status-dot offline"></span>
+                <span id="connection-text">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- 3D Visualization -->
+            <div class="visualization-panel">
+                <div id="three-container"></div>
+                <div class="camera-controls">
+                    <button id="reset-camera">Reset Camera</button>
+                    <button id="toggle-grid">Toggle Grid</button>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="panel-section">
+                    <h3>Quick Start Guide</h3>
+                    <div class="workflow-guide">
+                        <div class="step">1. <strong>Create Swarm</strong> - Add drones to simulation</div>
+                        <div class="step">2. <strong>Takeoff</strong> - Select drone and click Takeoff</div>
+                        <div class="step">3. <strong>Set Formation</strong> - Choose formation for flying drones</div>
+                        <div class="step">4. <strong>Run Experiment</strong> - Try automated scenarios</div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Swarm Control</h3>
+                    <div class="control-group">
+                        <label for="swarm-count">Number of Drones:</label>
+                        <input type="number" id="swarm-count" min="1" max="10" value="4">
+                        <button id="create-swarm">Create Swarm</button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <button id="emergency-stop" class="emergency-btn">EMERGENCY STOP</button>
+                        <button id="reset-simulation">Reset</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Drone Control</h3>
+                    <div class="control-group">
+                        <label for="drone-select">Select Drone:</label>
+                        <select id="drone-select">
+                            <option value="">Select a drone</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <button id="takeoff-btn">Takeoff</button>
+                        <button id="land-btn">Land</button>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="target-x">Target X:</label>
+                        <input type="number" id="target-x" step="0.1" value="0">
+                        <label for="target-y">Target Y:</label>
+                        <input type="number" id="target-y" step="0.1" value="0">
+                        <label for="target-z">Target Z:</label>
+                        <input type="number" id="target-z" step="0.1" value="0.6">
+                        <button id="goto-btn">Go To</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Formations</h3>
+                    <div class="control-group">
+                        <select id="formation-select">
+                            <option value="line">Line</option>
+                            <option value="circle">Circle</option>
+                            <option value="grid">Grid</option>
+                            <option value="vshape">V-Shape</option>
+                        </select>
+                        <button id="set-formation">Set Formation</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Experiments</h3>
+                    <div class="control-group">
+                        <select id="experiment-select">
+                            <option value="circular_formation">Circular Formation</option>
+                            <option value="figure_eight">Figure-8</option>
+                            <option value="takeoff_hover_land">Takeoff-Hover-Land</option>
+                        </select>
+                        <label for="experiment-duration">Duration (s):</label>
+                        <input type="number" id="experiment-duration" min="5" max="60" value="30">
+                        <button id="run-experiment">Run Experiment</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- State Panel -->
+            <div class="state-panel">
+                <h3>Drone States</h3>
+                <div id="drone-states"></div>
+                
+                <h3>Swarm Statistics</h3>
+                <div id="swarm-stats"></div>
+            </div>
+        </div>
+
+        <!-- Charts Panel -->
+        <div class="charts-panel">
+            <div class="chart-container">
+                <h3>Position vs Time</h3>
+                <canvas id="position-chart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Battery Levels</h3>
+                <canvas id="battery-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Results Panel -->
+        <div class="results-panel">
+            <h3>Experiment Results</h3>
+            <div id="experiment-results"></div>
+            <div class="export-controls">
+                <button id="export-csv">Export CSV</button>
+                <button id="export-json">Export JSON</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/experiments.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
