@@ -3,6 +3,9 @@
 
 echo "Starting Crazyflie Swarm Demo Backend..."
 
+# Activate virtual environment
+source /opt/venv/bin/activate
+
 # Navigate to backend directory
 cd backend
 
