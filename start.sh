@@ -4,12 +4,12 @@
 echo "Starting Crazyflie Swarm Demo Backend..."
 
 # Navigate to backend directory
-cd /app/backend
+cd backend
 
 # Check if main.py exists
 if [ ! -f "main.py" ]; then
-    echo "ERROR: main.py not found in /app/backend/"
-    ls -la /app/backend/
+    echo "ERROR: main.py not found in backend/"
+    ls -la backend/
     exit 1
 fi
 
